@@ -1,0 +1,133 @@
+<h2 class="article-title">Introduction</h2>
+<p>
+    I recently wrote the CCC Senior Division. I just wanted to share my analysis for each problem.
+</p>
+
+<h2 class="article-title">S1: Ragaman</h2>
+
+<h3>Analysis</h3>
+
+<p>
+    First let us consider the number of matched characters in string one and string two. If there are characters in string two that cannot be matched with characters in string one, it cannot be an anagram. We don't have to consider the number of wildcards because we can just match it with the unmatched characters in string one. Therefore, just keep a count of the characters in string one subtracted by the characters in string two. If there are more characters of one individual letter in string two than string one, it cannot be an anagram.
+</p>
+
+<p>
+    Time complexity: \(O(N)\)
+</p>
+
+<a href="https://github.com/jeffrey-xiao/Competitive-Programming/blob/master/src/contest/ccc/CCC_2016_S1.java">Link to Code</a>
+
+<h2 class="article-title">S2: Tandem Bicycle</h2>
+
+<h3>Analysis</h3>
+
+<p>
+    For both problems, sort the speeds from Dmojistan and Pegland in increasing order. If you want the minimum total speed, always pair the fastest from Dmojistan with the fastest from Pegland, the second fastest from Dmojistan with the second fastest from Pegland, and so on. If you want the maximum total speed, always pair the slowest from Dmojistan with the fastest from Pegland, the second slowest from Dmojistan with the second fastest from Pegland, and so on. It can be mathetmatically proven that this will always yield the maximum/minimum total speed.
+</p>
+
+<p>
+    Time complexity: \(O(N\ lg\ N)\)
+</p>
+
+<a href="https://github.com/jeffrey-xiao/Competitive-Programming/blob/master/src/contest/ccc/CCC_2016_S2.java">Link to Code</a>
+
+<h2 class="article-title">S3: Phonomenal Reviews</h2>
+
+<h3>Analysis</h3>
+
+<p>
+    Let us observe that any subset of vertices induces a subtree on the original tree and that we have to visit every vertex in the induced subtree to visit all the Pho restaurants. Next, let us consider an easier problem where we have to return to our starting position. The total distance travelled will be the number of edges in the subtree multiplied by two. Finally because we don't have to return to our original position, we want to subtract the longest distance in the tree. Thus our final answer will be the number of edges in the subtree multipled by two subtracted by the longest path distance in the subtree.
+</p>
+
+<p>
+    Time complexity: \(O(N)\)
+</p>
+
+<a href="https://github.com/jeffrey-xiao/Competitive-Programming/blob/master/src/contest/ccc/CCC_2016_S3.java">Link to Code</a>
+
+<h2 class="article-title">S4: Combining Riceballs</h2>
+
+<h3>Analysis<h3>
+
+<p>
+    $$\text{Let}\ dp[l][r] =
+    \begin{cases}
+        \text{true if } [l, r] \text{ can be combined}\\
+        \text{false otherwise}
+    \end{cases}
+    $$
+</p>
+
+<p>
+    If we loop through all possible values of \([l, r]\) where \(1 <= l <= r <= N\) and take the max of the rice ball sums where \(dp[l][r] = \text{true}\), we can obtain our answer.
+</p>
+    
+<p>
+    In order to compute \(dp[l][r]\), we have to consider a couple of cases:
+</p>
+
+<p>
+    $$\text{If } r = l, \text{ then } dp[l][r] = \text{true}$$
+</p>
+
+<p>
+    $$\text{If } r - l <= 2, \text{ then } dp[l][r] =
+    \begin{cases}
+        \text{true if } dp[l][l] = dp[r][r]\\
+        \text{false otherwise}
+    \end{cases}
+    $$
+</p>
+    
+<p>
+    $$\text{If } r - l > 2, \text{ then } dp[l][r] =
+    \begin{cases}
+        \text{true if } dp[l][i] = dp[j][r] \text{ where } l <= i < j <= r\\
+        \text{false otherwise}
+    \end{cases}
+    $$
+</p>
+
+<p>
+    For the last case, looping through \(i\) and \(j\) uses two for loops bringing the total time complexity to \(O(N^4)\), but you can reduce that to \(O(N^3)\) using maps or the two pointer method by making the observation that each prefix/suffix is monotonically increasing.
+</p>
+
+<p>
+    Time complexity: \(O(N^3)\)
+</p>
+
+<a href="https://github.com/jeffrey-xiao/Competitive-Programming/blob/master/src/contest/ccc/CCC_2016_S4.java">Link to Code</a>
+
+<h2 class="article-title">S5: Circle of Life</h2>
+
+<h3>Analysis</h3>
+
+<p>
+    Let us make a couple of observations first:
+</p>
+
+<ol>
+    <li>
+        This set of rules of 1D cellular automaton is called <a href="https://en.wikipedia.org/wiki/Rule_90">Rule 90</a>. It has a property of addictivity meaning that if two initial states are combined by computing the exlusive or of each of their states, then their subsequence configurations will be combined in the same way. For example, the second generation of <code>01010</code> can be computed by the XOR of the second generation of <code>01000</code> and <code>00010</code>
+    </li>
+    <li>
+        A simulation of <code>000...0001000...000</code> yields the <a href="https://en.wikipedia.org/wiki/Sierpinski_triangle">Sierpinski triangle</a>.
+    </li>
+    <li>
+        The \(2^i\text{th}\) row of the Sierpinshi triangle has exactly two ones.
+    </li>
+</ol>
+
+<p>
+    Using these three observations, we can compute the \(2^i\text{th}\) row of any generation in \(O(N)\) time. By decomposing \(T\) into a set of powers of two, we can obtain a time complexity of \(O(N\ log\ T)\).
+</p>
+
+<ol>
+    
+</ol>
+
+<p>
+    Time complexity: \(O(N\ log\ T)\)
+</p>
+
+<a href="https://github.com/jeffrey-xiao/Competitive-Programming/blob/master/src/contest/ccc/CCC_2016_S5.java">Link to Code</a>

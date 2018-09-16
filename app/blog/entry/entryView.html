@@ -1,0 +1,46 @@
+<header class="pageheader">Blog</header>
+<div class = "container">
+    <a href = "#!blog" class="simplelink">Return to blog list</a>
+    <div class="contentpane">
+        <div class="row">
+            <div class="col-sm-8">
+                <div ng-if="title != 'Blog Not Found'">
+                    <div class="section">
+						<h1 style="margin-top: 0px">{{title}}</h1>
+						<!--<hr>-->
+						<div bind-html-compile="body"></div>
+					</div>
+                    <div class="section">
+                        <h5>Published on {{date | date: 'mediumDate'}}</h5>
+                        <h5>
+                            A post about 
+                            <span ng-repeat="tag in postTags">
+                                <a class="simplelink simple-header" href="#!/blog/tags/{{tag}}" style="font-size: 14px">{{tag.toLowerCase()}}</a>{{$last ? '' : ($index==postTags.length-2) ? ', and ' : ', '}}
+                            </span>
+                        </h5>
+                    </div>
+                    <div class="section vertical-center-container" style="padding: 10px 30px">
+                        <div class="blog-nav-section vertical-center-content" style="width: 50%; text-align: left;" ng-if="prevPost !== undefined">
+                            <a href="#!/blog/posts/{{getUrl(prevPost)}}" class="simplelink simple-header-no-underline" style="font-size: 14px; line-height: 15px; max-width: 75%; display:inline-block"><i class="fa fa-chevron-left emphasis-no-underline vertical-center" style="left: -17px"></i>{{prevPost.substring(11)}}
+                            </a>
+                        </div>
+                        <div class="blog-nav-section vertical-center-content" style="width: 50%; text-align: right;" ng-if="nextPost !== undefined">
+                            <a href="#!/blog/posts/{{getUrl(nextPost)}}" class="simplelink simple-header-no-underline" style="font-size: 14px; line-height: 15px; max-width: 75%; display:inline-block"><i class="fa fa-chevron-right emphasis-no-underline vertical-center" style="right: -17px"></i>{{nextPost.substring(11)}}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4" id="sidebar">
+                <tags></tags>
+                <recent></recent>
+                <archive></archive>
+            </div>
+        </div>
+        <div ng-if="title != 'Blog Not Found'">
+            <br>
+            <div id = "disqus_thread"></div>
+            <br>
+        </div>
+    </div>
+</div>

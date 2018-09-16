@@ -1,0 +1,52 @@
+<header class="pageheader">Home</header>
+<div class = "container contentpane">
+    <div class="row">
+        <div class="col-sm-6 col-sm-push-6">
+            <div class="section section-responsive">
+                <div class="section-responsive-img-wrapper" style="width: 46%; float: right;">
+                    <img ng-src="assets/img/photo.jpg" style="max-width: 100%">
+                </div>
+                <div class="section-responsive-description" style="width: 50%; float: left">
+                    <div class="section-header-left" style="width: 100%; text-align: left; font-size: 20px">About Me</div>
+                    <p><b class="emphasis">Hi there!</b> My name is <span class="emphasis">Jeffrey Xiao</span>, and I am a 18 year student at <span class="emphasis">University of Waterloo</span>. I have an interest in <span class="emphasis">computer science</span>, and <span class="emphasis">web development</span>, and I enjoy developing cool applications and websites in my spare time. I also enjoy learning about different algorithms and data structures, and competing in various programing competitions. I have experience working in <span class="emphasis">Java</span>, <span class="emphasis">C++</span>, <span class="emphasis">Python</span>, <span class="emphasis">HTML</span>, <span class="emphasis">CSS</span>, <span class="emphasis">Javascript</span>, <span class="emphasis">PHP</span>, <span class="emphasis">LaTeX</span>, and <span class="emphasis">R</span>.
+                    </p>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        
+        <div class="col-sm-6 col-sm-pull-6">
+            <div class="section section-responsive">
+                <a class="section-responsive-img-wrapper simplelink" ng-href="{{project.url}}" target="_blank" style="width: 50%; float: left;">
+					<div id="project-img-wrapper">
+						<img ng-src="{{project.src}}">
+					</div>
+                </a>
+                <div class="section-responsive-description" style="width: 46%; float: right">
+                    <div class="section-header-right" style="width: 100%; text-align: right; font-size: 20px">Latest Project</div>
+						<div class="emphasis-no-underline" style="text-align:left; font-size: 16px; color: gray; font-weight: 600">
+                    		{{project.title}}
+						</div>
+                        <p style="text-align:left" ng-bind-html="to_trusted(project.description)">
+                        </p>
+                    <a class="simple-button" href={{project.url}} style="white-space:normal; float:right">Read more</a>
+                    <div class="clear"></div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            
+            <div class="section">
+                <div class="section-header-left">
+                    <a class="simplelink simple-header" href="#!/blog/posts/{{serialize(blogTitle)}}">Latest Blog</a>
+                </div>
+                <div class="emphasis-no-underline" style="font-size: 16px; color: gray; font-weight: 600">
+                    {{blogTitle.substring(10)}}
+                </div>
+                <p>{{blogDesc}}...</p>
+                
+                <a class="simple-button" href="#!/blog/posts/{{serialize(blogTitle)}}" style="white-space:normal; float:right">Read more</a>
+                <div class="clear"></div>
+            </div>
+        </div> 
+    </div>
+</div>

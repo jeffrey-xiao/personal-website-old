@@ -1,0 +1,45 @@
+<h2 class="article-title">Introduction</h2>
+
+<p>My ongoing notes for machine learning.</p>
+
+<h2 class="article-title">Definitions</h2>
+
+<p>
+    \begin{align*}
+        \theta      &= \text{weights/parameters}            \\
+        x           &= \text{features}                      \\
+        J(\theta)   &= \text{cost function}                 \\
+        h_\theta(x) &= \text{predicted value of features}   \\
+        n           &= \text{size of weights}               \\
+        m           &= \text{size of training set}          \\
+        \alpha      &= \text{learning rate}                 \\
+        \lambda     &= \text{constant for regularization}   \\
+    \end{align*}
+</p>
+
+<h2 class="article-title">Linear Regression</h2>
+<p>
+    \begin{align*}
+        h_\theta(x)     &= \theta^Tx                                                                        \\
+        J(\theta)       &= \frac{1}{2m}\sum\limits_{i=1}^m(h_\theta(x^{(i)}) - y^{(i)})^2                   \\
+        \theta          &= \theta - \alpha\frac{1}{m}\sum\limits_{i=1}^m(h_\theta(x^{(i)}) - y^{(i)})x^{(i)}\\
+        \theta          &= (X^TX)^{-1}X^Ty                                                                  \\
+        J(\theta)_{reg} &= \frac{\lambda}{2m}\sum\limits_{j=1}^n\theta_j^2                                  \\
+        \theta_{reg}    &= \frac{\lambda}{m}\theta                                                          \\
+    \end{align*}
+</p>
+<h2 class="article-title">Logistic Regression</h2>
+<p>
+    \begin{align*}
+        h_\theta(x)     &= g(\theta^Tx) \text{ where } g(z) = \frac{1}{1 + e^{-z}}                                          \\
+        J(\theta)       &= -\frac{1}{2m}\sum\limits_{i=1}^m(y^{(i)}log(h_\theta(x^{(i)})+(1-y^{(i)})log(1-h_\theta(x^{(i)}))\\
+        \theta          &= \theta - \alpha\frac{1}{m}\sum\limits_{i=1}^m(h_\theta(x^{(i)}) - y^{(i)})x^{(i)}                \\
+        J(\theta)_{reg} &= \frac{\lambda}{2m}\sum\limits_{j=1}^n\theta_j^2                                                  \\
+        \theta_{reg}    &= \frac{\lambda}{m}\theta                                                                          \\
+    \end{align*}
+</p>
+<h2 class="article-title">Neural Networks</h2>
+<h2 class="article-title">Support Vector Machines</h2>
+<h2 class="article-title">Kernels</h2>
+<h2 class="article-title">K-means Clustering</h2>
+<h2 class="article-title">Recommender Systems</h2>

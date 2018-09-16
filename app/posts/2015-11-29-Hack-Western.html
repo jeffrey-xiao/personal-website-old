@@ -1,0 +1,76 @@
+<captioned-image src="assets/img/blog/hack-western.jpg" max-height="400px">
+    Hack Western Team
+</captioned-image>
+
+<h2 class="article-title">Introduction</h2>
+<p>
+This weekend, I attended Hack Western with a few of my SHAD friends (Kevin, Lilian, and Katherine). It was a really great experience and we even came home with a sponsor prize! Going into Hack Western, I am pretty sure that my team had zero idea of how to proceed from our initial idea. A week before HW, Kevin had a really great idea of a live-updated trend-based news-aggregator web application. Essentially what it did was scrape a bunch of articles related to a specific trend and find the top keywords from all the articles. Then it would determine the best paragraphs from the best sources based on length, conciseness, views, and factual information. The paragraphs would be pushed to <a href="http://firebase.com/" target = "blank">Firebase</a> which was finally pulled and displayed on the website.
+</p>
+
+<h2 class="article-title">APIs</h2>
+<p>
+    So you are probably thinking the same thing as we did when we started the hackathon: <i>how the <b>hell</b> are we supposed to do that?</i> Well it turns out that the process was relatively simple once we got the ball rolling. The first we did was split up into groups; Kevin started designing and working on the frontend while Lilian, Katherine, and I sorted everything out on the backend. We decided to use Python because it was one of the most intuitive languages to use.
+</p>
+<p>
+    Our first big issue was how we were going to get the trends. In the end, we decided to pull them from Twitter's trending hashtags using its <a href="https://dev.twitter.com/rest/public" target = "blank">API</a>. The only problem was that hashtags were one word and we were afraid that we wouldn't be able to pick up any relevant articles. I attempted to use a greedy substring matching algorithm and <a href="https://github.com/jeffrey-xiao/Competitive-Programming/blob/master/src/codebook/string/AhoCorasick.java" target="blank">Aho-Corasick</a> to try to split the hashtags into phrases. However, there were too many "valid" phrases and exhaustively searching news articles for each phrase would be computationally heavy and yield too many of the same results. After brooding long and hard over the issue, we decided to screw it and directly search for the hashtag.
+</p>
+<p>
+    Next up, we used <a href="http://datamarket.azure.com/dataset/bing/search" target = "blank">Bing's Search API</a> to find the top thirty news articles. That step was pretty simple -- we used some code we found on StackOverflow for the API to work with Python. After that, we found a nice web scraper tool in Python called <a href="https://github.com/codelucas/newspaper" target = "blank">Newspaper</a>. Now we were getting down to the nitty-gritty of actually processing the articles. We used <a href="https://indico.io/" target = "blank">Indico</a> to determine the keywords for each paragraph. 
+</p>
+
+<h2 class="article-title">Algorithmic Magic</h2>
+<p>
+    Then we encountered our second big issue: <i>how are we supposed to determine the best articles without repeating facts and getting the entire picture?</i>
+</p>
+<p>
+    I came up with a great idea of creating a bipartite graph using the paragraphs and keywords as nodes. Maximal matching will then determine the minimum number of paragraphs that could cover all the content. Of course, this process might yield irrelevant results so we only used the most frequent keywords. After implementing <a href="https://github.com/jeffrey-xiao/Competitive-Programming/blob/master/src/codebook/graph/network/MaxBipartiteMatchingKuhn.java" target="blank">Kuhn's algorithm</a> (it was a surprise that I still knew how it worked!), we tested our program and it yielded pretty nice results! 
+</p>
+
+<br>
+
+<captioned-image src="assets/img/in-the-loop/1.jpg" max-height="400px">
+    Jim Kyte Entry
+</captioned-image>
+
+<br>
+
+<p><i>Whew!</i> A big portion of our backend was completed at this point. We checked the time and to our surprise, only 11 hours had passed -- we still had over two-thirds of the hackathon left. The simplicity of Python (especially its imports) really helped especially since we were using so many APIs. 
+</p>
+<br>
+<div class="in-text-code">
+    <code-snippet language="python">import urllib2
+import json
+import Queue
+import indicoio
+from firebase import firebase
+from random import shuffle
+from twitter import *
+from newspaper import Article
+import wolframalpha
+import simplejson
+import os
+import sys
+import struct
+import imghdr
+import time
+from BeautifulSoup import BeautifulSoup
+from googleplaces import GooglePlaces, types, lang</code-snippet>
+    <i>The list of imports we had at the beginning of our Python script</i>
+</div>
+<br>
+
+<h2 class="article-title">Data Visualization and Images</h2>
+<p>
+    The great thing about Indico is that it also gave us entities, political sentiment, and positivity. We used the entities, <a href="http://products.wolframalpha.com/developers/" target = "blank">Wolfram Alpha API</a>, and <a href="https://developers.google.com/places/" target = "blank">Google Places API</a> to obtain some location information about the paragraphs. We used the next few hours to create pretty data visualizations with the political sentiments, and positivity measure. We spent the next eight hours in the hackathon working on the user interface, encorporating all the information, and finalizing our algorithm to select the best paragraphs.
+</p>
+
+<p>
+    Staying up for nearly 24 hours, I fell asleep soon after. To my surprise when I woke up, my team had gotten image extraction working. Using <a href="http://www.crummy.com/software/BeautifulSoup/" target="blank">BeautifulSoup</a>, they were able to find images by locating the <code>&lt;img&gt;</code> tag. However, that extracted all the images from a webpage (even the ones on the side and navigation bars), so they used the <code>alt</code> attribute to determine if an image was relevant.
+</p>
+
+<h2 class="article-title">Conclusion</h2>
+<p>
+    The rest of the hackathon was rather unproductive since we had pretty much finished. Kevin used <a href="http://ionicframework.com/" target="blank">Ionic</a> to port <b>In the Loop</b> to Android and iOS. I thought that we had a pretty good shot at a couple of the prizes (Best Data Visualization, Best Life Hack, Best Open Source, and Best Social Impact), but after seeing the other projects I was unsure. I really wanted the Best Social Impact prize since they were giving out Bluetooth headphones. In the end, we got the Best Life Hack prize which was a pleasant surprise. Overall, Hack Western was a great experience and I was really happy that we built such a functional and well-designed web application in just 36 hours! I learned a lot about the different APIs out there, and especially how powerful Indico is!</p>
+<p>
+    Check out <a href="http://beintheloop.me/" target="blank">In the Loop</a> in action!
+</p>

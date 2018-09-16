@@ -1,0 +1,22 @@
+<header class="pageheader">Projects</header>
+<div class = "container contentpane">
+    <div class="row row-centered">
+        <div style="padding: 20px;" class="col-xs-12 col-sm-6 col-md-4" ng-repeat="project in projects"> 
+            <div style="padding: 15px; margin: 0px" class="section card" >
+                <a ng-href="{{project.url}}" class="link" target="_blank">
+                    <div class="card-inner" style="background-color:white">
+                        <img ng-src="{{project.src}}">
+                    </div>
+                </a>
+                <div class="section-header-center">{{project.title}}</div>
+                <div class="card-description-wrapper">
+                    <div class="card-description" ng-bind-html="to_trusted(project.description)">
+                    </div>
+                </div>
+                <a style="float: right; margin-top: 5px" class="simple-button" href={{project.url}}>
+                    Read more
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

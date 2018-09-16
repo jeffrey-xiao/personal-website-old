@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html ng-app="site" ng-controller="mainController">
+    <head>
+        <title>{{Page.getTitle()}}</title>
+        <!--<base href="/">-->
+        
+        <!--Importing stylesheets-->
+        <link rel="stylesheet" href="assets/css/bootstrap-3.3.5-dist/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="assets/css/font-awesome-4.5.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="assets/css/elusive-icons-2.0.0/css/elusive-icons.min.css">
+        <link rel="stylesheet" href="assets/css/stylesheet.css"/>
+        <link href='https://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+        <link rel="shortcut icon" href="assets/img/JX.ico">
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        
+        <meta name="google-site-verification" content="cVwtz7WisAVJdi7qoanwFmSDz3-wh7WdPzIaAlHUBdk" />
+    </head>
+    
+    <body>
+		<!--Loading Screen-->
+		<div id='loader-wrapper'>
+			<div id='loader'>
+				<div id="border-1"></div>
+				<div id="border-2"></div>
+				<div id="border-3"></div>
+			</div>
+			<div id='loader-section-left'></div>
+			<div id='loader-section-right'></div>
+		</div>
+		
+        <!--Main content and injected views-->
+        <nav>
+            <div class = "container">
+                <div class = "row min-button">
+                    <a class = "button" href = "">
+                        Jeffrey Xiao
+                        <br>
+                        <i class="el el-chevron-down" style = "font-size:10px; vertical-align:text-top"></i>
+                        <i class="el el-chevron-up" style = "font-size:10px; vertical-align:text-top"></i>
+                    </a>
+                </div>
+                <div class = "row menu toggled">
+                    <div class="col-sm-2"><a href = "#!" id="site-title">Jeffrey Xiao</a></div>
+                    <div class="col-sm-7 col-sm-offset-3">
+                        <div class="row">
+                            <div class = "col-sm-2 col-sm-offset-2"><a href = "#!" id="home-label" class="site-link">Home</a></div>
+                            <div class = "col-sm-2"><a href = "assets/docs/Jeffrey-Xiao-Resume.pdf" target = "blank" class="site-link">Resume</a></div>
+                            <div class = "col-sm-2"><a href = "#!projects" id="projects-label" class="site-link">Projects</a></div>
+                            <div class = "col-sm-2"><a href = "#!blog" id="blog-label" class="site-link">Blog</a></div>
+                            <div class = "col-sm-2"><a href = "#!contact" id="contact-label" class="site-link">Contact</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        
+        <div id="article-zoom-bg" style="display:none;"></div>
+        
+        <div id="main" style="overflow:hidden; margin-bottom:20px">
+            <div ng-view>
+            </div>
+        </div>  
+
+        <footer>
+            <div class = "container">
+                <div class = "row">
+                    <div class = "col-sm-4">
+                        <div class = "row">
+                            <div class = "col-xs-3"><a class="icon-container" target = "_blank" href = "https://www.facebook.com/jeffery.xiao"><i class="fa fa-facebook-official fa-2x"></i></a></div>
+                            <div class = "col-xs-3"><a class="icon-container" target = "_blank" href = "https://www.github.com/jeffrey-xiao"><i class="fa fa-github-square fa-2x"></i></a></div>
+                            <div class = "col-xs-3"><a class="icon-container" target = "_blank" href = "mailto:jeffrey.xiao1998@gmail.com"><i class="fa fa-envelope-square fa-2x"></i></a></div>
+                            <div class = "col-xs-3"><a class="icon-container" target = "_blank" href = "https://www.linkedin.com/in/jeffreyxiao"><i class="fa fa-linkedin-square fa-2x"></i></a></div>
+                        </div>
+                    </div>
+                    <div class = "col-sm-2 col-sm-offset-6">
+                        <div class="simple-button back-to-top">
+                            Back to Top
+                        </div>
+                    </div>
+                </div>
+            </div>
+		</footer>
+		
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({
+				tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+			});
+		</script>
+		
+		<!-- Importing Scripts -->
+		<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+		
+		<!--<script src="compiled.js"></script>-->
+
+		<script src="assets/libs/jquery-1.11.3.min.js"></script>
+		<script src="assets/libs/angular.min.js"></script>
+		<script src="assets/libs/angular-route.js"></script>
+		<script src="assets/libs/angular-animate.js"></script>
+		<script src="assets/libs/bootstrap.min.js"></script>
+		
+		<script src="app/global.js"></script>
+		<script src="app/script.js"></script>
+		
+		<script src="app/main/mainController.js"></script>
+		<script src="app/home/homeController.js"></script>
+		<script src="app/projects/projectsController.js"></script>
+		<script src="app/blog/blogController.js"></script>
+		<script src="app/blog/tags/tagsController.js"></script>
+		<script src="app/blog/entry/entryController.js"></script>
+		<script src="app/contact/contactController.js"></script>
+		
+		<script src="app/config.js"></script>
+		
+		<script src="app/blog/entry/entryDirective.js"></script>
+		<script src="app/blog/blogDirective.js"></script>
+    
+	</body>
+</html>

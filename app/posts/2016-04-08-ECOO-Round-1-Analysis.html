@@ -1,0 +1,73 @@
+<h2 class="article-title">Introduction</h2>
+
+<p>
+    The first round of the provincial ECOO competition happened on Wednesday. You can access the problems <a href="../assets/docs/ECOO-Round-1-Problems.pdf">here</a>.
+</p>
+
+<h2 class="article-title">Problem 1: Pass or Fail</h2>
+
+<h3>Analysis</h3>
+
+<p>
+	This problem simply asks whether the weighted average of a student's test, assignment, project, and quiz scores are above or equal to 50%.
+</p>
+
+<p>
+	A student passes the course if the following inequality holds true:
+
+	$$W_T \times T + W_A \times A + W_P \times P + W_Q \times Q >= 50%$$
+</p>
+
+<p>
+	Time complexity: \(O(N)\)
+</p>
+
+<h2 class="article-title">Problem 2: Spindie</h2>
+<h3>Analysis</h3>
+
+<b>Solution 1</b>
+
+<p>
+	First notice that the number of integers on the spinner is very large (\(1 <= N <= 5000\)), but the actual range of values each integer can take on is very small (\(1 <= S_i <= 100\)). Additionally, the number of occurences of each value does not matter. Thus we can have three loops that iterate through all possible values and check the following four cases to see if a value is possible:
+	
+	\begin{align*}
+		&1.\ (A \times B) \times C 	\\
+		&2.\ (A + B) \times C		\\
+		&3.\ (A \times B) + C		\\
+		&4.\ (A + B) + C			\\
+	\end{align*}
+</p>
+
+<p>
+	Time complexity: \(O(S^3)\)
+</p>
+
+<b>Solution 2</b>
+
+<p>
+	Generate pairs of spinner values and store it in a map. Then work backwards from the target values and check if it exists in the map.
+</p>
+
+<p>
+	Time complexity: \(O(N^2 + TN)\)
+</p>
+
+<h2 class="article-title">Problem 3: Railway Sort</h2>
+
+<h3>Analysis</h3>
+
+<p>
+	Make the observation that any value \(X\) cannot be moved until \(X + 1\) is before \(X + 2\) in order to have the minimal amount of movements. Then iterate starting from \(N\) and only move value \(X\) if it occurs after \(X + 1\).
+</p>
+
+<p>
+	Time complexity: \(O(N^2)\), or \(O(N)\) if you are smart about the implementation. 
+</p>
+
+<h2 class="article-title">Problem 4: Kayenne</h2>
+
+<h3>Analysis</h3>
+
+<p>
+	Store the houses in a set to check if your current position is already occupied by a house. Then you can just brute force and check all possible values that is in the radius. My team checked all \(X\) and \(Y\) where \(C_x - 50 <= X <= C_x + 50\) and \(C_y - 50 <= Y <= C_y + 50\). Then we checked if point \((X, Y)\) was in the radius or on a house. Finally, we inserted all the houses in a priority queue and determined if it was democratic or republican.
+</p>
