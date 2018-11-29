@@ -2,11 +2,9 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-
-An old version of my personal website built with AngularJS, jQuery, and MathJax.
-
-## Screenshot
 ![Screenshot of Site](assets/img/angular-site.png)
+
+An old version of my personal website built with AngularJS 1, jQuery, and MathJax.
 
 ## License
 
